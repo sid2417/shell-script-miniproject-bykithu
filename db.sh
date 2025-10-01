@@ -12,6 +12,9 @@ LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 
 # read -s PASSWORD
 
+echo "Please enter DB password:"
+read -s mysql_root_password
+
 
 USER=$(id -u)
 if [ $USER -eq 0 ]
@@ -54,10 +57,10 @@ VALIDATE $? "mysql starting is :: "
 # VALIDATE $? "mysql settingup password is :: "
 
 
-mysql -h 172.31.18.29 -uroot -p${ExpenseApp@1} -e 'show databases;' &>>$LOGFILE
+mysql -h db.kithusdairy.fun -uroot -p${mysql_root_password} -e 'show databases;' 
 if [ $? -ne 0 ]
 then
-    mysql_secure_installation --set-root-pass ${ExpenseApp@1} &>>$LOGFILE
+    mysql_secure_installation --set-root-pass ${mysql_root_password} 
     VALIDATE $? "MySQL Root password Setup"
 else
     echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
