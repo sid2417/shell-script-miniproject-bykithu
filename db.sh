@@ -8,9 +8,9 @@ SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 
 
-echo "Please Enter Your Mysql Password : "
+# echo "Please Enter Your Mysql Password : "
 
-read -s PASSWORD
+# read -s PASSWORD
 
 
 USER=$(id -u)
@@ -46,12 +46,12 @@ systemctl start mysqld
 VALIDATE $? "mysql starting is :: "
 
 
-# mysql_secure_installation --set-root-pass ExpenseApp@1
-# VALIDATE $? "mysql settingup password is :: "
-
-
-mysql_secure_installation --set-root-pass $PASSWORD
+mysql_secure_installation --set-root-pass ExpenseApp@1
 VALIDATE $? "mysql settingup password is :: "
+
+
+# mysql_secure_installation --set-root-pass $PASSWORD
+# VALIDATE $? "mysql settingup password is :: "
 
 echo -e $G" ************ Mysql installation is going Good ************"$N
 
