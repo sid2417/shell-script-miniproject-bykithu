@@ -10,7 +10,7 @@ LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 
 echo "Please Enter Your Mysql Password : "
 
-read PASSWORD
+read -s PASSWORD
 
 
 USER=$(id -u)
