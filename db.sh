@@ -46,8 +46,8 @@ systemctl start mysqld
 VALIDATE $? "mysql starting is :: "
 
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
-VALIDATE $? "mysql settingup password is :: "
+# mysql_secure_installation --set-root-pass ExpenseApp@1
+# VALIDATE $? "mysql settingup password is :: "
 
 
 # mysql_secure_installation --set-root-pass $PASSWORD
