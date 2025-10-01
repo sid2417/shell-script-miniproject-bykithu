@@ -54,7 +54,7 @@ VALIDATE $? "mysql starting is :: "
 # VALIDATE $? "mysql settingup password is :: "
 
 
-mysql -h 184.73.99.0 -uroot -p${ExpenseApp@1} -e 'show databases;' &>>$LOGFILE
+mysql -h 172.31.18.29 -uroot -p${ExpenseApp@1} -e 'show databases;' &>>$LOGFILE
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${ExpenseApp@1} &>>$LOGFILE
