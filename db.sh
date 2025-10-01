@@ -53,6 +53,17 @@ VALIDATE $? "mysql settingup password is :: "
 # mysql_secure_installation --set-root-pass $PASSWORD
 # VALIDATE $? "mysql settingup password is :: "
 
+
+mysql -h 184.73.99.0 -uroot -p${ExpenseApp@1} -e 'show databases;' &>>$LOGFILE
+if [ $? -ne 0 ]
+then
+    mysql_secure_installation --set-root-pass ${ExpenseApp@1} &>>$LOGFILE
+    VALIDATE $? "MySQL Root password Setup"
+else
+    echo -e "MySQL Root password is already setup...$Y SKIPPING $N"
+fi
+
+
 echo -e $G" ************ Mysql installation is going Good ************"$N
 
 
